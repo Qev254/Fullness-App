@@ -15,6 +15,9 @@ import AchievedGoals from "./scenes/saving-goals/AchievedGoals";
 import CurrentGoals from "./scenes/saving-goals/CurrentGoals";
 import OngoingDebts from "./scenes/debt-management/OngoingDebts";
 import RepaymentStrategies from "./scenes//debt-management/RepaymentStrategies";
+import Team from "./scenes/team";
+import Invoices from "./scenes/invoices";
+
 
 
 // import Contacts from "./scenes/contacts";
@@ -35,14 +38,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          < Slidebar />
-          {/* <Sidebar isSidebar={isSidebar} /> */}
+          {/* < Slidebar /> */}
+          <Slidebar isSidebar={Slidebar} />
           <main className="content">
-          <Topbar />
-            {/* <Topbar setIsSidebar={setIsSidebar} /> */}
+            <Topbar setIsSidebar={Slidebar} />
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              {/* <Route path="/team" element={<Team />} /> */}
+              <Route path="/team" element={<Team />} />
               {/* <Route path="/contacts" element={<Contacts />} /> */}
               <Route path="/budget-overview" element={<BudgetOverview />} />
               <Route path="/income-overview" element={<IncomeOverview />} />
@@ -55,7 +57,7 @@ function App() {
               <Route path="/ongoing-debts" element={<OngoingDebts />} />
               <Route path="/repayment-strategies" element={<RepaymentStrategies />} />
 
-              {/* <Route path="/invoices" element={<Invoices />} /> */}
+              <Route path="/invoices" element={<Invoices />} />
               {/* <Route path="/form" element={<Form />} /> */}
               {/* <Route path="/bar" element={<Bar />} /> */}
               {/* <Route path="/pie" element={<Pie />} /> */}

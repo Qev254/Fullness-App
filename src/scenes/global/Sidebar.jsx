@@ -1,17 +1,13 @@
 import { useState } from "react";
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
-// import "react-pro-sidebar/dist/css/styles.scss";
+import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
-import EmojiEvents from "@mui/icons-material/EmojiEvents";
-import Dashboard from "@mui/icons-material/Dashboard";
-import MonetizationOn from "@mui/icons-material/MonetizationOn";
-import CreditCard from "@mui/icons-material/CreditCard";
-// import { Dashboard, MonetizationOn, EmojiEvents, Schedule, CreditCard, Settings, Help, Feedback, Gavel, Lock, ExitToApp } from '@mui/icons-material';
-import Schedule  from "@mui/icons-material/Schedule";
-import Settings from "@mui/icons-material/Settings";
-import FaceRetouchingNaturalRounded from "@mui/icons-material/FaceRetouchingNaturalRounded";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
@@ -39,7 +35,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   );
 };
 
-const Slidebar = () => {
+const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -49,7 +45,7 @@ const Slidebar = () => {
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colors.grey[400]} !important`,
+          background: `${colors.primary[400]} !important`,
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -65,10 +61,9 @@ const Slidebar = () => {
         },
       }}
     >
-      <Sidebar collapsed={isCollapsed}>
+      <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
-          {/* 
-          FULLNESS APP LOGO AND MENU BARS ICON */}
+          {/* LOGO AND MENU ICON */}
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
@@ -84,12 +79,8 @@ const Slidebar = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography 
-                variant="h2" 
-                color={colors.blueAccent[100]}
-                fontWeight="bolder"
-                sx={{ m: "4px 0 0 0" }}>
-                  Fullness App
+                <Typography variant="h3" color={colors.grey[100]}>
+                  ADMINIS
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -105,21 +96,21 @@ const Slidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/appuser.png`}
+                  src={`../../assets/user.png`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
               <Box textAlign="center">
                 <Typography
-                  variant="h4 "
-                  color={colors.blueAccent[100]}
+                  variant="h2"
+                  color={colors.grey[100]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Joshua Okapes
+                  Ed Roh
                 </Typography>
-                <Typography variant="h5" color={colors.blueAccent[500]}>
-                  Admin
+                <Typography variant="h5" color={colors.greenAccent[500]}>
+                  VP Fancy Admin
                 </Typography>
               </Box>
             </Box>
@@ -129,50 +120,7 @@ const Slidebar = () => {
             <Item
               title="Dashboard"
               to="/"
-              icon={<Dashboard />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Budget & Expenses"
-              to="/budget-and-expenses"
-              icon={<MonetizationOn />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Savings Goals"
-              to="/savings-goals"
-              icon= { <EmojiEvents /> }
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Bills & Reminders"
-              to="/bills-and-reminders"
-              icon={<Schedule />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Debt Management"
-              to="/debt-management"
-              icon={<CreditCard />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Personalization"
-              to="/customization"
-              icon={<FaceRetouchingNaturalRounded />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Item
-              title="Settings"
-              to="/settings"
-              icon={<Settings />}
+              icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -182,7 +130,36 @@ const Slidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              <hr />
+              Data
+            </Typography>
+            <Item
+              title="Manage Team"
+              to="/team"
+              icon={<PeopleOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Contacts Information"
+              to="/contacts"
+              icon={<ContactsOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Invoices Balances"
+              to="/invoices"
+              icon={<ReceiptOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Typography
+              variant="h6"
+              color={colors.grey[300]}
+              sx={{ m: "15px 0 5px 20px" }}
+            >
+              Pages
             </Typography>
             <Item
               title="Profile Form"
@@ -191,15 +168,6 @@ const Slidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
-            <Item
-              title="Team"
-              to="/team"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
             <Item
               title="Calendar"
               to="/calendar"
@@ -252,9 +220,9 @@ const Slidebar = () => {
             />
           </Box>
         </Menu>
-      </Sidebar>
+      </ProSidebar>
     </Box>
   );
 };
 
-export default Slidebar;
+export default Sidebar;
